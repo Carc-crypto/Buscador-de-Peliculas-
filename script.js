@@ -9,6 +9,16 @@ const contenedor = document.getElementById('contenedor-peliculas');
 const formulario = document.getElementById('formulario');
 const busqueda = document.getElementById('busqueda');
 
+
+const modal = document.getElementById('modal-pelicula');
+const cerrarModal = document.querySelector('.cerrar-modal');
+const modalPoster = document.getElementById('modal-poster');
+const modalTitulo = document.getElementById('modal-titulo');
+const modalFecha = document.getElementById('modal-fecha').querySelector('span');
+const modalNota = document.getElementById('modal-nota').querySelector('span');
+const modalSinopsis = document.getElementById('modal-sinopsis');
+
+
 async function obtenerPeliculas(url) {
     try {
         const respuesta = await fetch(url);
@@ -26,8 +36,9 @@ async function obtenerPeliculas(url) {
 }
 
 
+
 function mostrarPeliculas(peliculas) {
-    contenedor.innerHTML = '';
+    contenedor.innerHTML = ''; 
 
     peliculas.forEach((pelicula) => {
         const { title, poster_path, vote_average, overview } = pelicula;
@@ -35,12 +46,13 @@ function mostrarPeliculas(peliculas) {
         
         if (!poster_path) return;
 
-        
         const urlImagenCompleta = IMG_PATH + poster_path;
 
+        
         const tarjetaPelicula = document.createElement('div');
         tarjetaPelicula.classList.add('pelicula-tarjeta');
 
+       
         tarjetaPelicula.innerHTML = `
             <img src="${urlImagenCompleta}" alt="${title}">
             <div class="pelicula-info">
@@ -53,6 +65,19 @@ function mostrarPeliculas(peliculas) {
             </div>
         `;
 
+        
+        tarjetaPelicula.addEventListener('click', () => {
+            modalPoster.src = urlImagenCompleta;
+            modalTitulo.innerText = title;
+            modalFecha.innerText = pelicula.release_date ? pelicula.release_date : 'No disponible';
+            modalNota.innerText = vote_average.toFixed(1);
+            modalSinopsis.innerText = overview ? overview : 'No hay sinopsis disponible.';
+            
+           
+            document.getElementById('modal-pelicula').style.display = 'block';
+        });
+
+        
         contenedor.appendChild(tarjetaPelicula);
     });
 }
@@ -73,4 +98,15 @@ formulario.addEventListener('submit', (evento) => {
         window.location.reload();
     }
 });
+cerrarModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+window.addEventListener('click', (evento) => {
+    if (evento.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+
+
 

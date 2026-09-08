@@ -59,7 +59,169 @@ button:hover {
 
 .contenedor {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 20px;
+    padding: 30px;
 }
+
+@keyframes aparecerSuave {
+    from {
+        opacity: 0;
+        transform: translateY(15px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pelicula-tarjeta {
+    background-color: #1e293b;
+    border-radius: 20px;    
+    animation: aparecerSuave 1.5s ease-out forwards;
+}
+
+.pelicula-tarjeta img {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover;
+     transition: softsmooth 0.5s ease-in-out, box-shadow 0.5s ease-in-out, border-color 0.3s ease-in-out;
+
+    animation: aparecerSuave 2.5s ease-out forwards;
+}
+.pelicula-tarjeta:hover {
+    transform: scale(3.5); 
+    box-shadow: 0 15px 35px rgba(56, 189, 248, 0.5); 
+    border: 1px solid #38bdf8; 
+    cursor: pointer;
+    z-index: 10;
+}
+
+.pelicula-info h3 {
+    margin: 0;
+    font-size: 0.95rem; 
+}
+
+
+
+input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    transition: all 0.3s ease;
+}
+
+
+button {
+    
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:active {
+    transform: scale(0.95); 
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 99999 !important;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(8px); 
+    transition: all 1s ease-in-out;
+}
+
+
+
+
+.modal-contenido {
+    background-color: #1e293b;
+    margin: 5% auto; 
+    padding: 30px;
+    border: 1px solid #38bdf8;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    position: relative;
+     animation: zoomEfecto 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+.cerrar-modal {
+    color: #94a3b8;
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.cerrar-modal:hover {
+    color: #ff3b30;
+}
+
+
+.modal-detalles {
+    display: flex;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+#modal-poster {
+    width: 250px;
+    height: 375px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.modal-texto {
+    flex: 1;
+}
+
+.modal-texto h2 {
+    margin-top: 0;
+    color: #38bdf8;
+    font-size: 2rem;
+}
+
+.modal-texto h3 {
+    color: #94a3b8;
+    margin-top: 20px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 5px;
+}
+
+
+@media (max-width: 768px) {
+    .modal-detalles {
+        flex-direction: column;
+        align-items: center;
+    }
+    .modal-contenido {
+        width: 90%;
+        margin: 10% auto;
+        max-height: 85vh;
+        overflow-y: auto; 
+    }
+    #modal-poster {
+        width: 180px;
+        height: 270px;
+    }
+}
+@keyframes zoomEfecto {
+    from {
+        transform: scale(0.7); 
+        opacity: 0;            
+    }
+    to {
+        transform: scale(1);   
+        opacity: 1;            
+    }
+}
+
