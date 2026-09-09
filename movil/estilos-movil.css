@@ -1,0 +1,84 @@
+body{
+    background-color: #0b0f19;
+    color: #ffffff;
+    font-family: system-ui, apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    text-align: center;
+    padding: 15px;
+    background-color: #151f32;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #38bdf8;
+}
+
+header p {
+    margin: 5px 0 0 0;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.caja-busqueda {
+    padding: 15px;
+}
+
+form {
+    display: flex;
+    width: 100%;
+}
+
+input {
+    flex: 1;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px 0 0 8px;
+    padding: 12px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+button {
+    background-color: #38bdf8;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    padding: 0 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+
+.contenedor-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    gap: 20px;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.contenedor-vertical img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.contenedor-vertical p, 
+.contenedor-vertical h2, 
+.contenedor-vertical h3 {
+    width: 100%;
+    max-width: 360px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}

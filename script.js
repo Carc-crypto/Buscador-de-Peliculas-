@@ -1,3 +1,16 @@
+(function() {
+    const infoDispositivo = navigator.userAgent.toLowerCase();
+    
+    const esMovil = /iphone|ipad|ipod|android|blackberry|mini|windows phone/i.test(infoDispositivo);
+
+   
+    if (esMovil) {
+        window.location.href = "./movil/index.html";
+    }
+})();
+
+
+
 const API_KEY = '69c6c0176365d47bff7b9db6c3d7d487';
 
 const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=es-MX`;
